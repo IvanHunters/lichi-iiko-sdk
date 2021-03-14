@@ -25,7 +25,6 @@ class IIKOCloud implements IIKOCloudInterface
     {
         $this->provider = $provider;
         $this->organization = new Organization($provider);
-        $this->order = new Order($provider);
         $this->nomenclature = new Nomenclature($provider, $this->organization->firstOrganization);
         $this->address = new Address($provider, $this->organization->firstOrganization);
     }

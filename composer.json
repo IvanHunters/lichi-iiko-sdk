@@ -1,0 +1,32 @@
+{
+  "name": "lichi/iiko-sdk",
+  "type": "library",
+  "description": "Grab contents From Vk",
+  "keywords": ["Lichi","lichi", "iiko php sdk", "iiko api"],
+  "homepage": "https://github.com/IvanHunters/lichi-iiko-sdk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ivan Okhotnikov",
+      "email": "ohotnikovivan@yandex.ru"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lichi\\Iiko\\": "src/",
+      "Lichi\\Iiko\\Sdk\\": "src/sdk/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}

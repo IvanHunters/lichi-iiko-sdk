@@ -16,8 +16,7 @@
   "require": {
     "guzzlehttp/guzzle": "^7.0",
     "ext-curl": "*",
-    "ext-json": "*",
-    "ext-http": "*"
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {

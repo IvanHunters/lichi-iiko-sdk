@@ -6,6 +6,7 @@ namespace Lichi\Iiko\Sdk\IIKOCloud\Nomenclature;
 
 use GuzzleHttp\RequestOptions;
 use Lichi\Iiko\ApiProvider;
+use RuntimeException;
 
 class Nomenclature implements NomenclatureInterface
 {
@@ -19,6 +20,10 @@ class Nomenclature implements NomenclatureInterface
 
     public function __construct(ApiProvider $apiProvider, string $organizationId)
     {
+        if (empty($organizationId))
+        {
+            throw new RuntimeException('Organization id is required');
+        }
         $this->apiProvider = $apiProvider;
         $this->organizationId = $organizationId;
     }
@@ -116,11 +121,11 @@ class Nomenclature implements NomenclatureInterface
                 ]
             ]
         );
-
-        $this->groups = $nomenclature['groups'];
-        $this->productCategories = $nomenclature['productCategories'];
-        $this->products = $nomenclature['products'];
-        $this->revision = $nomenclature['revision'];
-        return clone $this;
+        $nomenclatureObj = clone $this;
+        $nomenclatureObj->groups = $nomenclature['groups'];
+        $nomenclatureObj->productCategories = $nomenclature['productCategories'];
+        $nomenclatureObj->products = $nomenclature['products'];
+        $nomenclatureObj->revision = $nomenclature['revision'];
+        return $nomenclatureObj;
     }
 }

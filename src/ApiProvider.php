@@ -3,6 +3,7 @@
 
 namespace Lichi\Iiko;
 
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use \Psr\Http\Client\ClientInterface;
 use RuntimeException;
@@ -42,7 +43,15 @@ class ApiProvider
                 'Authorization' => "Bearer {$this->token}"
             ];
         }
-        $response = $this->client->request($typeRequest, $method, $params);
+        try {
+            $response = $this->client->request($typeRequest, $method, $params);
+        } catch (GuzzleException $exception){
+            $response = $exception->getResponse()->getBody(true);
+            throw new RuntimeException(sprintf(
+                "API ERROR, message: %s",
+                $response,
+            ));
+        }
 
         if ($response->getStatusCode() != 200) {
             throw new RuntimeException(sprintf(

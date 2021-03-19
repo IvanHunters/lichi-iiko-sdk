@@ -50,10 +50,10 @@ class Address
     {
         $response = $this->apiProvider->callMethod(
             "POST",
-            "/api/1/by_city",
+            "/api/1/streets/by_city",
             [
                 RequestOptions::JSON => [
-                    'organizationIds' => [$this->organizationId],
+                    'organizationId' => $this->organizationId,
                     'cityId' => $cityId
                 ]
             ]

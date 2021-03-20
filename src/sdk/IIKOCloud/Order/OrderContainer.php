@@ -242,8 +242,6 @@ class OrderContainer
             }
             if (count($this->deliveryPoint) !== 0) {
                 $response['order']['deliveryPoint']['address'] = $this->deliveryPoint;
-            } else {
-                throw new RuntimeException('Delivery address not be empty!');
             }
             if (!empty($this->coupon)) {
                 $response['order']['iikoCard5Info']['coupon'] = $this->coupon;

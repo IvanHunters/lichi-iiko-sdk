@@ -3,23 +3,23 @@
 
 namespace Lichi\Iiko;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use \Psr\Http\Client\ClientInterface;
 use RuntimeException;
 
 class ApiProvider
 {
-    private ClientInterface $client;
+    private Client $client;
     protected string $apiLogin;
     public string $token = "";
 
     /**
      * ApiProvider constructor.
-     * @param ClientInterface $client
+     * @param Client $client
      * @param string $apiLogin
      */
-    public function __construct(ClientInterface $client, string $apiLogin)
+    public function __construct(Client $client, string $apiLogin)
     {
         $this->client = $client;
         $this->apiLogin = $apiLogin;

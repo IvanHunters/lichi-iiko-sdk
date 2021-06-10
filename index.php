@@ -32,7 +32,7 @@ $userData = $iikoCloud->authorization->login->login('89996288989');
 
 $userInfo = new CustomerForImport([
     'name' => 'Иван',
-    'phone' => '+79996288989',
+    'phone' => '+79999999999',
     'birthday' => '2000-03-18',
 ]);
 $reg = $iikoCard->registration->registration($userInfo);

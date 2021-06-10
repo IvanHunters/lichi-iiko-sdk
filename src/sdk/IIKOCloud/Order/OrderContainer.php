@@ -146,7 +146,7 @@ class OrderContainer
         return $this;
     }
 
-    public function setDiscount(string $track): self
+    public function setDiscount(?string $track): self
     {
         if (!empty($track)) {
             $this->discountsInfo = $track;

@@ -2,9 +2,12 @@
 
 include "vendor/autoload.php";
 
-use Lichi\Iiko\Sdk\IIKOCloud\IIKOCloud;
 use Lichi\Iiko\ApiProvider;
+use Lichi\Iiko\CardApiProvider;
+use Lichi\Iiko\Sdk\IIKOCard\Authorization\CustomerForImport;
+use Lichi\Iiko\Sdk\IIKOCard\IIKOCard;
 use GuzzleHttp\Client;
+use Lichi\Iiko\Sdk\IIKOCloud\IIKOCloud;
 
 $client = new Client([
     'base_uri' => "https://api-ru.iiko.services",
@@ -12,34 +15,25 @@ $client = new Client([
     'timeout'  => 30.0,
 ]);
 
-$apiProvider = new ApiProvider($client, getenv('API_KEY'));
-$iikoCloud = new IIKOCloud($apiProvider);
-$nomenclature = $iikoCloud->nomenclature->getNomenclature();
-$products = $nomenclature->getProducts(
-    [
-        'id',
-        'name',
-        'tags',
-        'groupId',
-        'parentGroup',
-        'imageLinks',
-        'tags',
-        'sizePrices',
-        'type',
-        'weight',
-        'isDeleted',
-        'orderItemType'
-    ],
-    [
-        'imageLinks' => function ($placeData, $fieldValue){
-            if(count($fieldValue) === 0){
-                return -1;
-            }
-            return $fieldValue;
-        },
-        'sizePrices' => function ($placeData, $fieldValue) {
-            return $fieldValue[0]['price']['currentPrice'];
-        }
-    ]);
-$groups = $nomenclature->getGroups();
-$productWithGroupName = $nomenclature::linkProductsWithGroups($groups, $products);
+$clientCard = new Client([
+    'base_uri' => "https://iiko.biz:9900/",
+    'verify' => false,
+    'timeout'  => 30.0,
+]);
+
+$apiProviderCard = new CardApiProvider($clientCard, getenv('API_LOGIN'), getenv('API_PASS'));
+$iikoCard = new IIKOCard($apiProviderCard);
+
+$apiProviderCloud = new ApiProvider($client, getenv('API_KEY'));
+$iikoCloud = new IIKOCloud($apiProviderCloud);
+
+$userData = $iikoCloud->authorization->login->login('89996288989');
+
+
+$userInfo = new CustomerForImport([
+    'name' => 'Иван',
+    'phone' => '+79996288989',
+    'birthday' => '2000-03-18',
+]);
+$reg = $iikoCard->registration->registration($userInfo);
+$a = 10;

@@ -148,11 +148,10 @@ class OrderContainer
 
     public function setDiscount(string $track): self
     {
-        if (empty($track)) {
-            throw new RuntimeException('Track code not been empty!');
+        if (!empty($track)) {
+            $this->discountsInfo = $track;
+            $this->coupon = $track;
         }
-        $this->discountsInfo = $track;
-        $this->coupon = $track;
         return $this;
     }
 

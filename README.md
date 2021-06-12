@@ -1,3 +1,5 @@
+# Mail for cooperation: offers@lichi.su
+
 # lichi-iiko-sdk
 **For install:**
 ```
@@ -69,12 +71,12 @@ $productWithGroupName = $nomenclature::linkProductsWithGroups($groups, $products
 
 **Work with authorize**
 
-#Login
+# Login
 ```
 $userData = $iikoCloud->authorization->login->login('phone_number');
 ```
 
-#Registration
+# Registration
 ```
 $userInfo = new CustomerForImport([
     'name' => 'Name',

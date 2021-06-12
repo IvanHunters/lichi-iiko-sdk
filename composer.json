@@ -1,8 +1,8 @@
 {
   "name": "lichi/iiko-sdk",
   "type": "library",
-  "description": "Grab contents From Vk",
-  "keywords": ["Lichi","lichi", "iiko php sdk", "iiko api"],
+  "description": "PHP SDK for IIKO (Card/Biz/Cloud/Transport)",
+  "keywords": ["Lichi","lichi", "iiko php sdk", 'iiko', "iiko api", 'iiko card', 'iiko transport', 'iiko biz',' iiko cloud'],
   "homepage": "https://github.com/IvanHunters/lichi-iiko-sdk",
   "license": "MIT",
   "authors": [

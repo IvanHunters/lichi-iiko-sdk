@@ -1,4 +1,4 @@
-# Mail for cooperation: offers@lichi.su
+Mail for cooperation: offers@lichi.su
 
 # lichi-iiko-sdk
 **For install:**

@@ -69,9 +69,9 @@ $groups = $nomenclature->getGroups();
 $productWithGroupName = $nomenclature::linkProductsWithGroups($groups, $products);
 ```
 
-**Work with authorize**
+**Work with customers**
 
-# Login
+# Login | Get customers info use phone number
 ```
 $userData = $iikoCloud->authorization->login->login('phone_number');
 ```

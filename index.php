@@ -3,9 +3,6 @@
 include "vendor/autoload.php";
 
 use Lichi\Iiko\ApiProvider;
-use Lichi\Iiko\CardApiProvider;
-use Lichi\Iiko\Sdk\IIKOCard\Authorization\CustomerForImport;
-use Lichi\Iiko\Sdk\IIKOCard\IIKOCard;
 use GuzzleHttp\Client;
 use Lichi\Iiko\Sdk\IIKOCloud\IIKOCloud;
 
@@ -21,19 +18,8 @@ $clientCard = new Client([
     'timeout'  => 30.0,
 ]);
 
-$apiProviderCard = new CardApiProvider($clientCard, getenv('API_LOGIN'), getenv('API_PASS'));
-$iikoCard = new IIKOCard($apiProviderCard);
+//$apiProviderCard = new CardApiProvider($clientCard, getenv('API_LOGIN'), getenv('API_PASS'));
+//$iikoCard = new IIKOCard($apiProviderCard);
 
 $apiProviderCloud = new ApiProvider($client, getenv('API_KEY'));
 $iikoCloud = new IIKOCloud($apiProviderCloud);
-
-$userData = $iikoCloud->authorization->login->login('89996288989');
-
-
-$userInfo = new CustomerForImport([
-    'name' => 'Иван',
-    'phone' => '+79999999999',
-    'birthday' => '2000-03-18',
-]);
-$reg = $iikoCard->registration->registration($userInfo);
-$a = 10;

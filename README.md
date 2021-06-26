@@ -3,7 +3,7 @@ Email for cooperation: offers@lichi.su
 # lichi-iiko-sdk
 **For install:**
 ```
-composer require lichi/vk-iiko-sdk
+composer require lichi/iiko-sdk
 ```
 
 **Calling the constructor to get started**

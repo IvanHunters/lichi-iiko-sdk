@@ -8,6 +8,7 @@ use Lichi\Iiko\Sdk\IIKOCloud\Address\Address;
 use Lichi\Iiko\Sdk\IIKOCloud\Authorization\Authorization;
 use Lichi\Iiko\Sdk\IIKOCloud\Dictionary\Dictionary;
 use Lichi\Iiko\Sdk\IIKOCloud\Loyalty\Loyalty;
+use Lichi\Iiko\Sdk\IIKOCloud\Order\Delivery;
 use Lichi\Iiko\Sdk\IIKOCloud\Order\Order;
 use Lichi\Iiko\Sdk\IIKOCloud\Organization\Organization;
 use Lichi\Iiko\Sdk\IIKOCloud\Nomenclature\Nomenclature;
@@ -31,6 +32,10 @@ class IIKOCloud implements IIKOCloudInterface
     public Dictionary $dictionary;
     public Loyalty $loyalty;
     public Authorization $authorization;
+    /**
+     * @var Delivery
+     */
+    private Delivery $delivery;
 
     public function __construct(ApiProvider $provider)
     {
@@ -40,6 +45,7 @@ class IIKOCloud implements IIKOCloudInterface
         $this->loyalty = new Loyalty($provider, $this->organization->firstOrganization);
         $this->terminalGroup = new TerminalGroup($provider, $this->organization->firstOrganization);
         $this->order = new Order($provider, $this->organization->firstOrganization);
+        $this->delivery = new Delivery($provider, $this->organization->firstOrganization);
         $this->nomenclature = new Nomenclature($provider, $this->organization->firstOrganization);
         $this->address = new Address($provider, $this->organization->firstOrganization);
         $this->status = new Status($provider, $this->organization->firstOrganization);

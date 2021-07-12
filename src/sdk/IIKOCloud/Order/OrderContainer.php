@@ -23,6 +23,7 @@ class OrderContainer
     private string $terminalGroupId = '';
     private string $coupon = '';
     private string $sourceKey = '';
+    private array $guests = [];
 
     public function __construct(string $organizationId)
     {
@@ -188,6 +189,15 @@ class OrderContainer
         return $this;
     }
 
+    public function setPersons(int $count): self
+    {
+        $this->guests = [
+            'count' => $count,
+            'splitBetweenPersons' => true
+        ];
+        return $this;
+    }
+
     public function setComment(string $comment): self
     {
         $this->comment = $comment;
@@ -216,6 +226,9 @@ class OrderContainer
 
         if (count($this->order) === 0)
         {
+            if(!empty($this->guests)) {
+                $response['order']['guests'] = $this->guests;
+            }
             if (count($this->customerInfo) !== 0) {
                 $response['order']['customer'] = $this->customerInfo;
             } else {

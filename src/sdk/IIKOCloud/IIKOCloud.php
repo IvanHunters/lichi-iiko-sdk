@@ -32,10 +32,7 @@ class IIKOCloud implements IIKOCloudInterface
     public Dictionary $dictionary;
     public Loyalty $loyalty;
     public Authorization $authorization;
-    /**
-     * @var Delivery
-     */
-    private Delivery $delivery;
+    public Delivery $delivery;
 
     public function __construct(ApiProvider $provider)
     {

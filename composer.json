@@ -14,7 +14,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "guzzlehttp/guzzle": "~7",
+    "guzzlehttp/guzzle": "~6",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*"

@@ -48,7 +48,10 @@ class ApiProvider
         } catch (GuzzleException $exception){
             $response = $exception->getResponse()->getBody(true);
             throw new RuntimeException(sprintf(
-                "API ERROR, message: %s",
+                "API ERROR, Method: %s\Token: %s\nParams: %s\nResponse: %s",
+                $method,
+                $this->token,
+                $params,
                 $response,
             ));
         }

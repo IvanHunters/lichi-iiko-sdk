@@ -31,13 +31,13 @@ class ApiProvider
      * @param string $typeRequest
      * @param string $method
      * @param array $params
+     * @param bool $useToken
      * @return mixed
      */
     public function callMethod(string $typeRequest, string $method, array $params = [], bool $useToken = true)
     {
         usleep(380000);
 
-        $authParams = [];
         if($useToken){
             $params['headers'] = [
                 'Authorization' => "Bearer {$this->token}"
@@ -51,7 +51,7 @@ class ApiProvider
                 "API ERROR, Method: %s\Token: %s\nParams: %s\nResponse: %s",
                 $method,
                 $this->token,
-                $params,
+                json_encode($params, JSON_UNESCAPED_UNICODE),
                 $response,
             ));
         }

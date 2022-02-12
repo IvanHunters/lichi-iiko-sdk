@@ -63,4 +63,17 @@ class Delivery
             ]
         );
     }
+
+    public function cancel(string $orderId) {
+        return $this->apiProvider->callMethod(
+            "POST",
+            "/api/1/deliveries/close",
+            [
+                RequestOptions::JSON => [
+                    'organizationId' => $this->organizationId,
+                    'orderId' => $orderId
+                ]
+            ]
+        );
+    }
 }

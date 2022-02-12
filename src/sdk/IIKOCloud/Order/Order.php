@@ -73,4 +73,17 @@ class Order
             ]
         );
     }
+
+    public function cancel(string $orderId) {
+        return $this->apiProvider->callMethod(
+            "POST",
+            "/api/1/order/close",
+            [
+                RequestOptions::JSON => [
+                    'organizationId' => $this->organizationId,
+                    'orderId' => $orderId
+                ]
+            ]
+        );
+    }
 }

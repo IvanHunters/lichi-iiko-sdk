@@ -42,7 +42,7 @@ class TerminalGroup implements TerminalGroupInterface
     public function getFirstTerminalGroup(): string
     {
             if (count($this->terminalGroups) === 0) {
-                throw new RuntimeException("Terminal groups is empty!");
+                throw new \RuntimeException("Terminal groups is empty!");
             }
             return $this->terminalGroups[0]['items'][0]['id'];
     }
